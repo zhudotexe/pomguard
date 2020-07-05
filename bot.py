@@ -1,6 +1,7 @@
 import os
 
 import twitter
+from discord.ext import commands
 from discord.ext.commands import Bot
 
 # auth
@@ -25,6 +26,20 @@ class Pomguard(Bot):
 
 
 bot = Pomguard(PREFIX)
+
+
+@bot.event
+async def on_ready():
+    print(f"Logged in as {bot.user.name} ({bot.user.id})")
+
+
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.CommandNotFound):
+        return
+
+    await ctx.send(str(error))
+
 
 for cog in COGS:
     bot.load_extension(cog)

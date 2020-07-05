@@ -1,6 +1,11 @@
+import datetime
+import random
+
+import discord
 from discord.ext import commands, tasks
 from discord.utils import sleep_until
-import datetime
+
+from utils import fashionreport
 
 BOT_CHANNEL = 728754413686095953
 
@@ -16,13 +21,13 @@ def _next_weekday(day_of_week, time):
 def _next_time(time):
     date = datetime.date.today()
     out = datetime.datetime.combine(date, time, tzinfo=datetime.timezone.utc)
-    if out < datetime.datetime.now():
+    if out < datetime.datetime.now(datetime.timezone.utc):
         out += datetime.timedelta(days=1)
     return out
 
 
 def weekly_loop(day_of_week, time):
-    async def wait_for_weekly():
+    async def wait_for_weekly(_):
         await sleep_until(_next_weekday(day_of_week, time))
 
     def decorator(func):
@@ -35,7 +40,7 @@ def weekly_loop(day_of_week, time):
 
 
 def daily_loop(time):
-    async def wait_for_time():
+    async def wait_for_time(_):
         await sleep_until(_next_time(time))
 
     def decorator(func):
@@ -85,8 +90,13 @@ class Timers(commands.Cog):
             return
 
         await channel.send("Weeklies reset!\n"
-                           "- Fashion Report\n"  # todo get the fashion report info
+                           "- Fashion Report\n"
                            "- Jumbo Cactpot")
+        embed = discord.Embed()
+        embed.colour = random.randint(0, 0xffffff)
+        latest = await fashionreport.get_latest(self.bot)
+        embed.set_image(url=latest.media[0].media_url)
+        await channel.send(embed=embed)
 
     # ==== dailies ====
     # ---- 8pm UTC ----
