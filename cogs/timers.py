@@ -108,7 +108,9 @@ class Timers(commands.Cog):
             return
 
         await channel.send("Dailies reset!\n"
-                           "- Grand Company Turnins")
+                           "- Grand Company Turnins\n"
+                           "- Beast Tribe Quests\n"
+                           "- Daily Hunts")
 
 
 def setup(bot):
