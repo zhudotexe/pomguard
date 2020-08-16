@@ -13,7 +13,7 @@ TWITTER_TOKEN_SECRET = os.environ.get("TWITTER_TOKEN_SECRET")
 
 # config
 PREFIX = "!"
-COGS = ("cogs.timers", "cogs.lookups")
+COGS = ("cogs.timers", "cogs.lookups", "cogs.tempchannels")
 
 
 class Pomguard(Bot):
