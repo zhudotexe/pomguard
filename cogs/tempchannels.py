@@ -64,16 +64,16 @@ class TempChannels(commands.Cog):
             self.temp_channels[text_channel.id] = TempChannelInfo(
                 category, text_channel, voice_channel, ctx.author, invite)
             welcome = await text_channel.send(
-                f"Welcome to *{channel_name}*, kupo! This is a temporary channel created by a FC member for one or "
-                f"more instances.\n\n"
+                f"Welcome to *{channel_name}*, kupo! This is a temporary channel created by {ctx.author.mention} for "
+                f"one or more instances.\n\n"
                 f"**For FC Members**: Remember to run `!close` when you're done with the channel! Here's a snippet to "
                 f"paste into chat: ```\n"
                 f"/p Hello, kupo! We've set up a temporary Discord channel to talk in for this instance if you'd like "
                 f"to join: {invite.url}"
                 f"```\n\n"
-                f"**For Visitors**: Feel free to use channels in this category to chat and coordinate! "
-                f"You will automatically be removed from this server the next time you log off, so let a FC member "
-                f"know if you want to stay!"
+                f"**For Visitors**: Welcome to the home of Kupo EX! Feel free to use channels in this category to chat "
+                f"and coordinate! You will automatically be removed from this server the next time you log off, so "
+                f"let a FC member know if you want to stay."
             )
             await welcome.pin()
         await ctx.send(f"Created {text_channel.mention}, kupo!")
