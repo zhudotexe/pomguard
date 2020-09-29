@@ -14,6 +14,7 @@ TWITTER_TOKEN_SECRET = os.environ.get("TWITTER_TOKEN_SECRET")
 # config
 PREFIX = "!"
 COGS = ("cogs.timers", "cogs.lookups", "cogs.tempchannels")
+intents = discord.Intents.default()
 
 
 class Pomguard(Bot):
@@ -25,7 +26,7 @@ class Pomguard(Bot):
                                    access_token_secret=TWITTER_TOKEN_SECRET)
 
 
-bot = Pomguard(PREFIX)
+bot = Pomguard(PREFIX, intents=intents)
 
 
 @bot.event
