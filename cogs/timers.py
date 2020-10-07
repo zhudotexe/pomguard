@@ -57,11 +57,13 @@ class Timers(commands.Cog):
         self.bot = bot
         self.tuesdays.start()
         self.saturdays.start()
+        self.daily_3pm.start()
         self.daily_8pm.start()
 
     def cog_unload(self):
         self.tuesdays.cancel()
         self.saturdays.cancel()
+        self.daily_3pm.cancel()
         self.daily_8pm.cancel()
 
     # ==== weeklies ====
@@ -76,9 +78,13 @@ class Timers(commands.Cog):
             return
 
         await channel.send("Weeklies reset!\n"
-                           "- Custom Deliveries\n"
-                           "- Wondrous Tails\n"
-                           "- Doman Enclave Reconstruction")
+                           "- Challenge Log (2.0)\n"
+                           "- Custom Deliveries (3.0)\n"
+                           "- Wondrous Tails (3.0)\n"
+                           "- Doman Enclave Reconstruction (4.0)\n"
+                           "- Allegory Cap (5.0)\n"
+                           "- Puppet's Bunker (5.3)\n"
+                           "- Faux Hollows (5.3)")
 
     # ---- sunday 2am UTC ----
     # cactpot
@@ -99,6 +105,19 @@ class Timers(commands.Cog):
         await channel.send(embed=embed)
 
     # ==== dailies ====
+    # ---- 3pm UTC ----
+    # GC turnins
+    @daily_loop(datetime.time(hour=15))
+    async def daily_3pm(self):
+        channel = self.bot.get_channel(BOT_CHANNEL)
+        if not channel:
+            return
+
+        await channel.send("Dailies reset!\n"
+                           "- Beast Tribe Quests\n"
+                           "- Duty Roulette daily bonuses\n"
+                           "- Daily Hunts")
+
     # ---- 8pm UTC ----
     # GC turnins
     @daily_loop(datetime.time(hour=20))
@@ -109,8 +128,7 @@ class Timers(commands.Cog):
 
         await channel.send("Dailies reset!\n"
                            "- Grand Company Turnins\n"
-                           "- Beast Tribe Quests\n"
-                           "- Daily Hunts")
+                           "- Adventurer Squadron Training")
 
 
 def setup(bot):
