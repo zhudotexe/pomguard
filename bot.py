@@ -14,7 +14,7 @@ TWITTER_TOKEN_SECRET = os.environ.get("TWITTER_TOKEN_SECRET")
 
 # config
 PREFIX = "!"
-COGS = ("cogs.timers", "cogs.lookups", "cogs.tempchannels")
+COGS = ("cogs.lookups", "cogs.tempchannels")
 intents = discord.Intents.default()
 
 
