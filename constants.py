@@ -6,6 +6,7 @@ TEMPCHANNEL_NAMES = [
     'Varis', 'Zenos', 'Gaius', 'Nael', 'Asahi', 'Fordola', 'Grynewaht', 'Livia', 'Maxima', 'Nero', 'Rhitahtyn',
     'Estinien', 'Ysayle', 'Thordan', 'Fortemps', 'Ilberd', 'Khloe', 'Zhloe', 'Matoya', 'Hien', 'Yugiri', 'Gosetsu',
     'Yotsuyu', 'Hancock', 'Cirina', 'Magnai', 'Sadu', 'Exarch', 'Lyna', 'Hildibrand', 'Godbert', 'Greg', 'Gilgamesh',
-    'Rowena', 'Gerolt', 'Haurchefant', 'Nashu'
+    'Rowena', 'Gerolt', 'Haurchefant', 'Nashu',
+    'Tankbuster', 'Raidwide', 'Stack-Marker'
 ]
 SECONDS_ONE_DAY = 60 * 60 * 24
